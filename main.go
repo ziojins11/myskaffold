@@ -2,13 +2,19 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"net/http"
 )
 
-func main() {
-	for {
-		fmt.Println("Hello world 4!")
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, world!\n")
+}
 
-		time.Sleep(time.Second * 1)
+func main() {
+	http.HandleFunc("/", handler)
+
+	fmt.Println("Server started on port 80")
+	err := http.ListenAndServe(":80", nil)
+	if err != nil {
+		fmt.Println("Error starting server:", err)
 	}
 }
