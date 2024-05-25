@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: skaffold-gitops
-        image: nginx
+        image: javalove93/hello-go
         resources:
           limits:
             memory: "64Mi"
